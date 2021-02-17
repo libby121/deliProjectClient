@@ -1,0 +1,29 @@
+form div,input {
+  /*  width: 450pt;*/
+    
+     text-align: start; 
+}
+
+form{
+   
+    text-align: center;
+    font-size: 12pt;
+}
+.row{
+   width: 100%;
+   margin-left: 10%;
+     
+    /* display: grid; */
+    /* grid-template-columns: auto auto auto; */
+}
+
+
+.card-body h5{
+    display: inline;
+}
+.card-body{
+    text-align: center;
+}
+/* label{ */
+    /* display: inline; */
+/* } */

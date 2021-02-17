@@ -1,0 +1,173 @@
+<div class="row">
+
+    <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="save(f.value)">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" #title="ngModel" [(ngModel)]="product.title" class="form-control" name="title" required>
+                <div class="alert alert-danger" *ngIf="title.touched && title.errors?.required">Product title is
+                    required.</div>
+            </div>
+            <div class="form-group">
+                <label for="desc">Description:</label>
+
+                <input type="text" class="form-control" name="desc" #desc="ngModel" [(ngModel)]="product.description">
+                <span *ngIf=""></span>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <div class=" input-group">
+
+                    <input name="price" #price="ngModel"  [(ngModel)]="product.price" type="number" class="form-control" required>
+
+                    <span class="input-group-text">₪</span>
+
+                </div>
+                <div class="alert alert-danger" *ngIf="price.touched && price.errors?.required">Product price is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="price.value && price.value<0">Product price is not valid.</div>
+
+            </div>
+            <div class="form-group">
+
+                <label for="cat">Category:</label>
+
+                <select name="cat" class="form-control" #cat="ngModel" [(ngModel)]="product.category">
+                    <option *ngFor="let i of categories">{{i}}</option>
+                </select> 
+                <div class="alert alert-danger" *ngIf="cat.touched && cat.errors?.required">Product category is
+                    required.</div>
+            </div>
+            <div class="form-group">
+                <label for="amount">Quantity:</label>
+
+                <input type="amount" name="amount" #qua="ngModel"  [(ngModel)]="product.amount" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="qua.touched && qua.errors?.required">Product quantity is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="qua.value && qua.value<=0">Product quantity is not valid.</div>
+
+            </div>
+            <div class="form-group">
+                <label for="img">Image:</label>
+                <input id="img" type="text" class="form-control">
+
+            </div>
+            <div [ngSwitch]="cat.value">
+                <span *ngSwitchCase="categoryList[0]">
+                    <div class="form-group">
+                        <label for="fcat">Food Category:</label>
+                          
+                        <select class="form-control" id="fcat" required #fcat="ngModel" [(ngModel)]="foodType"
+                            name="fcat">
+                            <option *ngFor="let i of foodCateggories">{{i}}</option>
+                        </select><br />
+                        <div class="form-group">
+                            <label for="fooddate">Expiration Date:</label>
+                            <input class="form-control" id="fdate" type="date" name="fdate" required #fdate="ngModel"
+                                [(ngModel)]="expirationDate">
+                        </div>
+                    </div>
+                </span>
+                <span *ngSwitchCase="categoryList[1]">
+                    <div class="form-group">
+
+                        <label for="flowertype">Flower Type:</label>
+
+                        <select class="form-control" id="flowertype" required #fType="ngModel" [(ngModel)]="flowerType"
+                            name="flowerType">
+                            <option *ngFor="let i of flowerTypes">{{i}}</option>
+                        </select> <br />
+                        <label for="flowertype">Flower Color:</label>
+                        <select class="form-control" id="flowerColor" required #fColor="ngModel"
+                            [(ngModel)]="flowerColor" name="flowerColor">
+
+                            <option *ngFor="let i of flowerColors">{{i}}</option>
+                        </select> <br />
+                        <label for="flowersize">Flower Size:</label>
+                        <select id="flowersize" class="form-control" required #fSize="ngModel" [(ngModel)]="flowerSize"
+                            name="flowerSize">
+                            <option *ngFor="let i of flowerSizes">{{i}}</option>
+                        </select> <br />
+                    </div>
+                </span>
+                <span *ngSwitchCase="categoryList[2]">
+                    <div class="form-group">
+                        <label for="author">Author:</label>
+
+                        <input class="form-control" type="text" id="author" required #bauthor="ngModel"
+                            [(ngModel)]="authorBook" name="authorBook">
+                    </div>
+                    <div class="form-group">
+                        <label for="lang">Language:</label>
+
+                        <input class="form-control" id="lang" type="text" required #blang="ngModel"
+                            [(ngModel)]="langBook" name="langBook">
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year:</label>
+
+                        <input class="form-control" id="year" type="number" required #byear="ngModel"
+                            [(ngModel)]="yearBook" name="yearBook">
+                    </div>
+
+                </span>
+                <span *ngSwitchCase="categoryList[3]">
+                    <div class='form-group'>
+                        <label for="director">Director:</label>
+                        <input id="director" class="form-control" type="text" required #mdirector="ngModel"
+                            [(ngModel)]="directorMovie" name="directorMovie">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieYear">Year:</label>
+                        <input type="number" id="movieYear" class="form-control" required #myear="ngModel"
+                            [(ngModel)]="yearMovie" name="yearMovie">
+                    </div>
+                    <div class='form-group'>
+                        <label for="movieGenre">Genre:</label>
+                        <select class="form-control" id="movieGenre" required #mgenre="ngModel" [(ngModel)]="genreMovie"
+                            name="genreMovie">
+                            <option *ngFor="let genre of  movieGenres">{{genre}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieLang">Language:</label>
+                        <input type="text" id="movieLang" class="form-control" required #mlang="ngModel"
+                            [(ngModel)]="langMovie" name="langMovie">
+                    </div>
+                   
+                   
+                   
+                   
+                   
+                   
+                </span>
+
+            </div>
+
+            <br /><br />
+
+
+
+
+            <button [disabled]="!f.valid" class="btn btn-primary" 
+                style="width: 20%;font-size: 17pt;">Save</button>&nbsp;
+                <button type="button" *ngIf="id" (click)=delete() class="btn btn-danger" 
+                style="width: 20%;font-size: 17pt;">Delete</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <div class="card" style="width: 50%;">
+                <img src="https://www.twopeasandtheirpod.com/wp-content/uploads/2018/02/Pasta-Pomodoro-2.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">{{title.value}}</h3>
+                    <h5 class="card-text">{{price.value | currency:'ILS'}}</h5>
+                    <p class="card-text">{{desc.value}}</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

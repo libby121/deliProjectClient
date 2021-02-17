@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+ @import "~bootstrap/dist/css/bootstrap.css";
+ body{
+     padding: 60pt;
+      font-size: 17pt;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+ }
+ input{
+     width: 10%;
+ }
+  
+  
+  
