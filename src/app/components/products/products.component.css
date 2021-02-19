@@ -1,0 +1,21 @@
+#container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto; 
+    text-align: center
+
+    ; 
+  
+  
+
+    
+}
+.sticky-top{
+    top:80px;
+}
+li{
+    cursor: pointer;
+}
+.col-3{
+margin-top: 1.5rem;
+}

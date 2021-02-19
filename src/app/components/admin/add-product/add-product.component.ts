@@ -135,7 +135,7 @@ export class AddProductComponent implements OnInit {
 
       switch (this.product.category) {
         case this.categories[0]:
-          let foodProduct = new Food(p.title, p.price, this.categories[0], p.amount, this.foodType, this.expirationDate);
+          let foodProduct = new Food(p.title, p.price, this.categories[0], p.amount, p.description,this.foodType, this.expirationDate);
           foodProduct.id = this.id;
           this.service.updateFood(foodProduct).subscribe((newFood) => {
             console.log(newFood.foodType);
@@ -146,7 +146,7 @@ export class AddProductComponent implements OnInit {
           })
           break;
         case this.categories[1]:
-          let flowerProduct = new Flower(p.title, p.price, this.categories[1], p.amount, this.flowerSize, this.flowerColor, this.flowerType);
+          let flowerProduct = new Flower(p.title, p.price, this.categories[1], p.amount, p.description,this.flowerSize, this.flowerColor, this.flowerType);
           flowerProduct.id = this.id;
           this.service.updateFlower(flowerProduct).subscribe((newFlower) => {
             console.log(newFlower.color);
@@ -156,7 +156,7 @@ export class AddProductComponent implements OnInit {
           })
           break;
         case this.categories[2]:
-          let bookProduct = new Book(p.title, p.price, this.categories[2], p.amount, this.authorBook, this.yearBook, this.langBook);
+          let bookProduct = new Book(p.title, p.price, this.categories[2], p.amount, p.description,this.authorBook, this.yearBook, this.langBook);
           bookProduct.id = this.id;
           this.service.updateBook(bookProduct).subscribe((newBook) => {
             console.log(newBook.author);
@@ -166,8 +166,9 @@ export class AddProductComponent implements OnInit {
           })
           break;
         case this.categories[3]:
-          let movieProduct = new Movie(p.title, p.price, this.categories[3], p.amount, this.directorMovie, this.genreMovie, this.yearMovie, this.langMovie)
-          movieProduct.id = this.id;
+          let movieProduct = new Movie(p.title, p.price, this.categories[3], p.amount,p.description, this.directorMovie, this.genreMovie, this.yearMovie, this.langMovie)
+          movieProduct.id = this.id;       
+
           this.service.updateMovie(movieProduct).subscribe((newMovie) => {
             console.log(newMovie.genre);
             alert("product successfully updated")
@@ -182,7 +183,7 @@ export class AddProductComponent implements OnInit {
       switch (this.product.category) {
 
         case this.categories[0]:
-          let foodProduct = new Food(p.title, p.price, this.categories[0], p.amount, this.foodType, this.expirationDate);
+          let foodProduct = new Food(p.title, p.price, this.categories[0], p.amount, this.product.description, this.foodType, this.expirationDate);
           this.service.addFood(foodProduct).subscribe((newFood) => {
             console.log(newFood.foodType);
             console.log(newFood.expirationDate);
@@ -192,7 +193,7 @@ export class AddProductComponent implements OnInit {
           })
           break;
         case this.categories[1]:
-          let flowerProduct = new Flower(p.title, p.price, this.categories[1], p.amount, this.flowerSize, this.flowerColor, this.flowerType)
+          let flowerProduct = new Flower(p.title, p.price, this.categories[1], p.amount,this.product.description,  this.flowerSize, this.flowerColor, this.flowerType)
           this.service.addFlower(flowerProduct).subscribe((newFlower) => {
             console.log(newFlower.color);
             this.router.navigate(['admin/all_products'])
@@ -201,7 +202,7 @@ export class AddProductComponent implements OnInit {
           })
           break;
         case this.categories[2]:
-          let bookProduct = new Book(p.title, p.price, this.categories[2], p.amount, this.authorBook, this.yearBook, this.langBook);
+          let bookProduct = new Book(p.title, p.price, this.categories[2], p.amount,this.product.description, this.authorBook, this.yearBook, this.langBook);
           this.service.addBook(bookProduct).subscribe((newBook) => {
             console.log(newBook.author);
             this.router.navigate(['admin/all_products'])
@@ -210,7 +211,7 @@ export class AddProductComponent implements OnInit {
           })
           break;
         case this.categories[3]:
-          let movieProduct = new Movie(p.title, p.price, this.categories[3], p.amount, this.directorMovie, this.genreMovie, this.yearMovie, this.langMovie)
+          let movieProduct = new Movie(p.title, p.price, this.categories[3], p.amount,this.product.description,  this.directorMovie, this.genreMovie, this.yearMovie, this.langMovie)
           this.service.addMovie(movieProduct).subscribe((newMovie) => {
             console.log(newMovie.genre);
             this.router.navigate(['admin/all_products'])

@@ -1,0 +1,21 @@
+<div class="card" style="width: 22rem;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzXw9yy8Xmj_eEsV7xCaBj-mF4IEitcqb6nQ&usqp=CAU" class="card-img-top" alt="...">
+    <div class="card-body">   
+      <h3 class="card-title">{{product?.title}}</h3>
+      <p class="card-text">{{product?.description}}</p>
+       <h4 class="card-text" *ngIf="flowerType">color: {{flowerColor}}&nbsp;size: {{flowerSize}}</h4>
+      <h4 class="card-text" *ngIf="bookYear"> {{bookAuthor}}&nbsp;, {{bookYear}}</h4>
+      <h4 class="card-text" *ngIf="movieDirector"> {{movieDirector}}&nbsp;, {{movieYear}}</h4>
+      <h5 class="card-title">{{product?.price | currency:'ILS'}}</h5>
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-block"  (click)="addToCart(product?.id)"> Add to cart</button>
+
+    </div>
+    <div>{{ getProductQuantity() }}</div>
+  </div>
+  
+  
+    
+ 

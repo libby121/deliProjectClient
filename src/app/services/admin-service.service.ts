@@ -74,7 +74,9 @@ export class AdminServiceService {
     return this.service.delete(this.url+"/deleteProduct/"+id,{"responseType":"text"})
   }
  
- 
+ public getAllFoods():Observable<Food[]>{
+   return this.service.get<Food[]>(this.url+"/allFoods")
+ }
  
  
 }

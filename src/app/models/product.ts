@@ -1,6 +1,7 @@
 import { Category } from './category.enum';
 
 export abstract class Product {
+  [x: string]: any;
   
     // public title:string;
     // public price:number;
@@ -8,8 +9,8 @@ export abstract class Product {
     // public description:string;
     //  public amount:number;
     //  public image?:string;
-    //  public id?:number;
-    constructor(public title?:string,public price?:number,public category?:Category,public amount?:number,public description?:string,public image?:string,public id?:number){
+      public id?:number;
+    constructor(public title?:string,public price?:number,public category?:Category,public amount?:number,public description?:string,public image?:string){
         // this.title=title;
         // this.price=price;
         // this.category=category;

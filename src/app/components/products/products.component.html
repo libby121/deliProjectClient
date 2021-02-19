@@ -1,8 +1,35 @@
-{{allProducts.length}}
-<p *ngFor="let p of allProducts">
 
-    <li>{{p.id}}</li>
-    <li>{{p.title}}</li>
-     <li>{{p.price}}</li>
-    <li>{{p.category}}</li>
-</p>
+<h1 *ngIf="allProducts.length==0">no pros</h1>
+<div *ngIf="allProducts.length>0">
+    <ul class="nav nav-pills" *ngIf="category==='food'">
+   <li class="nav-item" *ngFor="let f of foodTypes"
+    routerLink="/" 
+    [queryParams]="{category : category,foodCategory:f}"
+    [class.active]="foodType===f"
+    > 
+        <a class="nav-link">{{f}}</a>
+    </li>
+</ul>
+
+<div class="row">
+    <div class="col-3 ">
+        <div class="list-group sticky-top">
+            <a class="list-group-item" 
+            routerLink="/" 
+            [class.active]="!category"
+            >All
+        </a>
+            <a class="list-group-item list-group-item-action" *ngFor="let c of categories" routerLink="/"
+                [queryParams]="{category : c}" [class.active]="category===c ">
+
+                {{c}}</a>
+        </div>
+    </div>
+    <div id="container" class="col">
+
+        <div *ngFor="let p of filteredProducts">
+            <app-product-card [productId]="p?.id" [cart]='customerCart'> </app-product-card>
+        </div>
+    </div>
+</div>
+</div>

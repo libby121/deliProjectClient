@@ -15,6 +15,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import {FormsModule}from '@angular/forms';
  import { HttpClientModule } from '@angular/common/http';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { AddCustomerComponent } from './components/admin/add-customer/add-customer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {FormsModule}from '@angular/forms';
     AdminProductsComponent,
     AdminOrdersComponent,
     NotFoundComponent,
-    AddProductComponent
+    AddProductComponent,
+    ProductCardComponent,
+    AddCustomerComponent
   ],
   imports: [
     BrowserModule,
